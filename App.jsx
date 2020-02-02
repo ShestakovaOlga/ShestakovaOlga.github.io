@@ -15,4 +15,5 @@ const ContainerStyle = styled.div`
 background-color:HSL(8, 30%, 85%);
 width:100vw;
 min-height:100vh;
+font-size:1.3rem;
 `
