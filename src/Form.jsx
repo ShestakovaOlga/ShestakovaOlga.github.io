@@ -2,13 +2,50 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import settings from '../assets/img/settings.svg'
 import { FaLinkedinIn, FaGithub, FaTwitter } from "react-icons/fa";
+import { useStaticKit, ValidationError } from '@statickit/react';
+import { sendContactEmail } from '@statickit/functions';
 
 
 
-export default () => {
+export default (props) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [errors, setErrors] = useState([]);
+
+    const client = useStaticKit();
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        setErrors([]);
+        setIsSubmitting(true);
+        let resp = await sendContactEmail(client, {
+            subject: `${email} submitted the contact form`,
+            replyTo: email,
+            fields: { name, message }
+        });
+
+        switch (resp.status) {
+            case 'ok':
+                setIsSubmitted(true);
+                setName('')
+                setEmail('')
+                setMessage('')
+                break;
+
+            case 'argumentError':
+                setErrors(resp.errors);
+                setIsSubmitting(false);
+                break;
+
+            default:
+                setIsSubmitting(false);
+                break;
+        }
+    }
+
     return (
         <Container>
             <TextStyle>
@@ -20,12 +57,30 @@ export default () => {
                         <LinkStyled href='https://twitter.com/OlgaShestakov13' target="_blank"><FaTwitter /></LinkStyled>
                     </div>
                     <span>Tambien puedes escribírme por email: olgshestakova@gmail.com</span>
-                    <FormStyle>
-                        <span>o deja tu mensaje aquí</span>
-                        <InputStyle value={name} onChange={setName} placeholder='Nombre' />
-                        <InputStyle value={email} onChange={setEmail} placeholder='Email' />
-                        <TextAreaStyle value={message} onChange={setMessage} placeholder='Mensaje' />
-                        <Button>
+                    <FormStyle onSubmit={handleSubmit}>
+                        <span>o dejar tu mensaje aquí</span>
+                        <InputStyle id="name"
+                            type="text"
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                            placeholder='Nombre' />
+                        <InputStyle id="email"
+                            type="email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            placeholder='Email' />
+                        <ValidationError
+                            prefix="Email"
+                            field="replyTo"
+                            errors={errors}
+                        />
+                        <TextAreaStyle id="message"
+                            name="message"
+                            value={message}
+                            onChange={e => setMessage(e.target.value)}
+                            placeholder='Mensaje' />
+                        {isSubmitted ? '¡Gracias por contactar conmigo!' : null}
+                        <Button type="submit" disabled={isSubmitting}>
                             Enviar
                     </Button>
                     </FormStyle>
@@ -55,15 +110,19 @@ div{
     margin-top:15px;
     color:rgb(50,50,50);
 }
+
 `
 const LinkStyled = styled.a`
  text-decoration:none;
  color:black;
  margin:15px 15px;
 `
-const FormStyle = styled.div`
+const FormStyle = styled.form`
 display:flex;
 flex-direction:column;
+span{
+    margin-top:15px;
+}
 `
 
 const InputStyle = styled.input`

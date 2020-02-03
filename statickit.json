@@ -1,0 +1,8 @@
+{
+    "functions": {
+        "sendContactEmail": {
+            "type": "sendNotification",
+            "to": "olgshestakova@gmail.com"
+        }
+    }
+}

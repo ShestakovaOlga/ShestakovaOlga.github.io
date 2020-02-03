@@ -11,10 +11,14 @@ export default () => {
             <TextStyle>
                 {'<about>'}
                 <div>
-                    Programadora front-end con ganas de seguir creciendo a nivel profesional.
-                 Tecnologías aprendidas por ahora: React, React Native, HTML, CSS3, Javascript, SASS, ES6, AntD.
-                 Me considero una persona responsable, pro-activa, capaz de trabajar en equipo.
-                 Me adapto con facilidad a nuevos entornos de trabajo.
+                    Hola, soy Olga y soy programadora. Pero no siempre fue así.
+                    Estudié Turismo en la Universidad de Rusia y me gustó
+                    hasta que empecé a trabajar. Pronto entendí que el trabajo no se adaptaba a mi estilo de vida,
+                     no cumplia mis expectativas.
+                    Me resistía bastante al cambio laboral pero ahora puedo decir que soy programadora front-end
+                    con ganas de seguir creciendo a nivel profesional.
+                    Me considero una persona responsable, pro-activa, capaz de trabajar en equipo
+                    y me adapto con facilidad a nuevos entornos de trabajo.
                  </div>
                 <a href={CV} target="_blank">Aquí puedes descargar mi CV</a>
 
@@ -49,6 +53,6 @@ a{
     margin-bottom:15px;
     text-decoration:none;
     cursor: pointer;
-     
+
 }
 `

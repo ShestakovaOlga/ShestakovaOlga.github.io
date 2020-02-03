@@ -19,7 +19,6 @@ export default (props) => {
     useEffect(() => {
         if ((forward && textToWrite[text.length]) || (!forward && text.length > 0)) {
             setTimeout(() => {
-                console.log('text', text.length);
                 if (forward) {
                     setText(text + textToWrite[text.length])
                 } else {
@@ -28,7 +27,6 @@ export default (props) => {
             }, 30)
         } else {
             setTimeout(() => {
-                console.log('forward false');
                 if (forward && textToWrite !== role) {
                     setForward(false)
                 } else {
