@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useGlobal } from 'reactn'
 import styled from 'styled-components'
 import girlNote from '../assets/img/girlNote.svg'
 import About from './About'
@@ -8,11 +8,13 @@ import Form from './Form'
 
 const role = 'Junior Front-End Developer'
 const firstRole = 'Especialista en Turismo 🤔'
-export default () => {
+
+export default (props) => {
     const [textToWrite, setTextToWrite] = useState(firstRole)
     const [text, setText] = useState('')
     const [cursor, setCursor] = useState(false)
     const [forward, setForward] = useState(true)
+    const [mode] = useGlobal('mode')
 
     useEffect(() => {
         if ((forward && textToWrite[text.length]) || (!forward && text.length > 0)) {
@@ -55,6 +57,7 @@ export default () => {
                         }}>|</span>
                     </div>
                 </PresentStyle>
+                <Logo src={girlNote} />
             </HeaderStyle>
             <About />
             <Training />
@@ -71,28 +74,31 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 width:100vw;
-min-height:100%;
+min-height:100vh;
 `
 const HeaderStyle = styled.div`
 display:flex;
+flex-direction:column;
 justify-content: center;
 width:100%;
-height:350px;
+height:100vh;
 `
 const PresentStyle = styled.div`
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-font-size:2rem;
+font-size:${(props) => props.mode === 'pc' ? '3rem' : '1.5rem'};
+color:rgb(50,50,50);
+padding:15px;
 span{
-    font-size:2.5rem;
-    font-weight:bold;
+    font-size:${(props) => props.mode ? '3.5rem' : '2rem'};
 }
 `
 
 const Logo = styled.img`
-width:50%;
+width:100%;
+height:50%;
 opacity:0.2;
-margin-right:50px;
+margin-top:${(props) => props.mode ? '200px' : '100px'};
 `

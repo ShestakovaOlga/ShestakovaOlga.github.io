@@ -1,18 +1,30 @@
-import React from 'react'
+import React, { useGlobal } from 'reactn'
 import styled from 'styled-components'
 import settings from '../assets/img/settings.svg'
 
 
 
-export default () => {
+export default (props) => {
+    const [mode] = useGlobal('mode')
     return (
         <Container>
-            <Logo src={settings} />
             <TextStyle>
-                {'<experience>'}<br />
-                <br />
-                Tecnologías aprendidas por ahora: React, React Native, HTML, CSS3, Javascript, SASS, ES6, Bootstrap.<br />
-                <br />{' </experience>'}
+                {'<experience>'}
+                <MediaStyle>
+                    <VideoStyle>
+                        <span>Proyecto 'Chat'.ReactNative</span>
+                    </VideoStyle>
+                    <VideoStyle>
+                        <span>Proyecto 'WaceCab'.React</span>
+                    </VideoStyle>
+                    <VideoStyle>
+                        <span>Proyecto 'WaceCab'.React</span>
+                    </VideoStyle>
+                    <VideoStyle>
+                        <span>Proyecto 'WaceCab'.React</span>
+                    </VideoStyle>
+                </MediaStyle>
+                {' </experience>'}
             </TextStyle>
         </Container>
 
@@ -21,17 +33,30 @@ export default () => {
 
 const Container = styled.div`
 display:flex;
-justify-content:center;
 align-items:center;
 width:100%;
-height:350px;
-margin:10px 0 30px 0;
+max-width:90%;
+margin-top:30px;
+margin-bottom:30px;
 `
-const Logo = styled.img`
-width:50%;
-opacity:0.2;
-height:350px;
-`
+
 const TextStyle = styled.div`
-width:50%;
+padding:20px;
+color:#A074BA;
+div{
+    margin-bottom:15px;
+    margin-top:15px;
+    color:rgb(50,50,50);
+}
+`
+const MediaStyle = styled.div`
+display:flex;
+flex-wrap:${(props) => props.mode ? 'nowrap' : 'wrap'};
+width:100%; 
+`
+const VideoStyle = styled.div`
+border:1px solid green;
+width:200px; 
+height: 400px;
+margin:0 30px;
 `
