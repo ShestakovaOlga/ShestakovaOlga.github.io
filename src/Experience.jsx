@@ -83,6 +83,7 @@ div{
 }
 `
 const CarouselStyle = styled(Carousel)`
+    width:100%;
     .carousel {
         max-height: 500px;
         max-width: 50vw;

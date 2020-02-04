@@ -127,7 +127,7 @@ span{
 `
 
 const InputStyle = styled.input`
-padding:15px;
+padding:5px;
 border:none;
 outline:none;
 border-bottom:1px solid black;
@@ -137,7 +137,7 @@ font-size:1rem;
 `
 
 const TextAreaStyle = styled.textarea`
-padding:15px;
+padding:5px;
 background-color:#F3DEDC;
 border:none;
 border-bottom:1px solid black;
@@ -154,4 +154,5 @@ border-radius:10px;
 outline:none;
 cursor: pointer;
 font-size:1rem;
+border:none;
 `
