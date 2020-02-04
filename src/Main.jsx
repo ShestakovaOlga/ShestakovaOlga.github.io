@@ -83,16 +83,16 @@ height:100vh;
 margin-bottom:30px;
 `
 const PresentStyle = styled.div`
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-font-size:${(props) => props.mode === 'phone' ? '1.3rem' : '3rem'};
-color:rgb(50,50,50);
-padding:15px;
-span{
-    font-size:${(props) => props.mode === 'phone' ? '1.8rem' : '3.5rem'};
-}
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-size:${(props) => props.mode === 'phone' ? '1.3rem' : '3rem'};
+    color:rgb(50,50,50);
+    padding:15px;
+    span{
+        font-size:${(props) => props.mode === 'phone' ? '1.8rem' : '3.5rem'};
+    }
 `
 
 const Logo = styled.img`

@@ -1,0 +1,28 @@
+{
+    "version": 2,
+    "name": "cv",
+    "scope": "olgashestakova",
+    "alias": [
+        "olgashestakova.now.sh"
+    ],
+    "builds": [
+        {
+            "src": "dist/**/*.*",
+            "use": "@now/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/dist/$1",
+            "continue": true
+        },
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "/.*",
+            "dest": "/dist/index.html"
+        }
+    ]
+}

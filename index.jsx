@@ -2,9 +2,11 @@ import React, { setGlobal } from 'reactn'
 import { render } from 'react-dom'
 import App from './App'
 
+setGlobal({
+  mode: 'pc',
+}).then(onresize)
 
 
-onresize()
 window.addEventListener('resize', onresize)
 function onresize() {
   const w = window.innerWidth
@@ -21,9 +23,6 @@ function onresize() {
   })
 }
 
-setGlobal({
-  mode: 'pc',
-})
 
 render(
   <App />
