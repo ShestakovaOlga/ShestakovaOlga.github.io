@@ -25,8 +25,9 @@ export default (props) => {
         <Container>
             <TextStyle>
                 {'<experience>'}
+                <TitleStyle>WakeCab</TitleStyle>
                 <MediaStyle mode={mode}>
-                    <CarouselStyle width='100%' selectedItem={car1} onChange={setCar1} autoPlay showThumbs={false} showStatus={false} infiniteLoop>
+                    <CarouselStyle mode={mode} width='100%' selectedItem={car1} onChange={setCar1} autoPlay showThumbs={false} showStatus={false} infiniteLoop>
                         <img src={w1} />
                         <img src={w2} />
                         <img src={w3} />
@@ -39,7 +40,8 @@ export default (props) => {
                         Las tecnologias usadas: React, JS, HTML, CSS, Control de versiones con Git,Node.js, AntD, Axios.
                     </DescriptionStyle>
                 </MediaStyle>
-                {mode === 'phone' ? <Line></Line> : null}
+                <Line></Line>
+                <TitleStyle>Proyecto personal</TitleStyle>
                 <MediaStyle mode={mode}>
                     <DescriptionStyle mode={mode}>
                         Proyecto propio en construcción. Todavía esta en Demo Versión. Es una plataforma para empresas que inclue un chat,
@@ -49,7 +51,7 @@ export default (props) => {
                         Además se puede elegir entre recebir mensajes fura de horario laboral o no.
                          Las tecnologias usadas: React Native, Expo, Styled Components, Control de versiones con Git, WebSockets.
                     </DescriptionStyle>
-                    <CarouselStyle selectedItem={car2} onChange={setCar2} autoPlay showThumbs={false} showStatus={false} infiniteLoop>
+                    <CarouselStyle mode={mode} selectedItem={car2} onChange={setCar2} autoPlay showThumbs={false} showStatus={false} infiniteLoop>
                         <img src={c1} />
                         <img src={c2} />
                         <img src={c3} />
@@ -72,6 +74,11 @@ max-width:90%;
 margin-top:30px;
 margin-bottom:50px;
 `
+const TitleStyle = styled.div`
+width:100%;
+text-align:center;
+margin-top:20px;
+`
 
 const TextStyle = styled.div`
 padding:20px;
@@ -86,7 +93,7 @@ const CarouselStyle = styled(Carousel)`
     width:100%;
     .carousel {
         max-height: 500px;
-        max-width: 50vw;
+        max-width:${(props) => props.mode === 'phone' ? '100vw' : '50vw'};
     }
     .carousel .slide {
         background: none;
