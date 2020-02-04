@@ -25,34 +25,37 @@ export default (props) => {
         <Container>
             <TextStyle>
                 {'<experience>'}
-                <MediaStyle>
-                    <CarouselStyle width='100%' selectedItem={car1} onChange={setCar1} autoPlay showThumbs={false} showStatus={false}>
+                <MediaStyle mode={mode}>
+                    <CarouselStyle width='100%' selectedItem={car1} onChange={setCar1} autoPlay showThumbs={false} showStatus={false} infiniteLoop>
                         <img src={w1} />
                         <img src={w2} />
                         <img src={w3} />
                         <img src={w4} />
                         <img src={w5} />
                     </CarouselStyle>
-                    <DescriptionStyle>
-                        Como freelancer estoy desarrollando el frontEnd de una app web para WakeCab.
+                    <DescriptionStyle mode={mode}>
+                        Desarrollo del frontEnd de una app web para WakeCab.
                         Es una empresa que se dedica a gestionar viviendas y transporte.
+                        Las tecnologias usadas: React, JS, HTML, CSS, Control de versiones con Git,Node.js, AntD, Axios.
                     </DescriptionStyle>
                 </MediaStyle>
-                <MediaStyle>
-                    <CarouselStyle selectedItem={car2} onChange={setCar2}>
+                {mode === 'phone' ? <Line></Line> : null}
+                <MediaStyle mode={mode}>
+                    <DescriptionStyle mode={mode}>
+                        Proyecto propio en construcción. Todavía esta en Demo Versión. Es una plataforma para empresas que inclue un chat,
+                        registro de horarios, información sobre empleado y calendario con eventos.
+                        La idea de esta app es recebir datos del equipo y al mismo tiempo respetar su privacidad y su horario laboral
+                        ya que para registrarse solo hace falta el correo electronico, contraseña y invitación de empresa.
+                        Además se puede elegir entre recebir mensajes fura de horario laboral o no.
+                         Las tecnologias usadas: React Native, Expo, Styled Components, Control de versiones con Git, WebSockets.
+                    </DescriptionStyle>
+                    <CarouselStyle selectedItem={car2} onChange={setCar2} autoPlay showThumbs={false} showStatus={false} infiniteLoop>
                         <img src={c1} />
                         <img src={c2} />
                         <img src={c3} />
                         <img src={c4} />
                         <img src={c5} />
                     </CarouselStyle>
-                    <DescriptionStyle>
-                        Chat
-                        Como freelancer estoy desarrollando el frontEnd de una app web para WakeCab.
-                        Es una empresa que se dedica a gestionar viviendas y transporte.
-                        Como freelancer estoy desarrollando el frontEnd de una app web para WakeCab.
-                        Es una empresa que se dedica a gestionar viviendas y transporte.
-                    </DescriptionStyle>
                 </MediaStyle>
                 {' </experience>'}
             </TextStyle>
@@ -67,7 +70,7 @@ align-items:center;
 width:100%;
 max-width:90%;
 margin-top:30px;
-margin-bottom:30px;
+margin-bottom:50px;
 `
 
 const TextStyle = styled.div`
@@ -92,21 +95,22 @@ const CarouselStyle = styled(Carousel)`
         max-width: 100%;
         width: auto;
     }
-  /* .ant-carousel .slick-slide {
-   object-fit: contain;
-   max-width: 100%;
-   max-height: 100%;
-   width: auto;
-   height: auto;
-  } */
 `
 
 const MediaStyle = styled.div`
 display:flex;
-justify-content:center;
+flex-direction:${(props) => props.mode === 'phone' ? 'column' : 'row'};;
 align-items:center;
 width:100%; 
 `
 const DescriptionStyle = styled.div`
 padding:15px;
+text-indent: 30px;
+width:${(props) => props.mode === 'phone' ? '100%' : '70%'};
+
+`
+const Line = styled.div`
+width:100%;
+height:1px;
+background-color:#A074BA;
 `

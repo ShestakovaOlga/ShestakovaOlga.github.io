@@ -47,7 +47,7 @@ export default (props) => {
         <Container>
             <HeaderStyle>
                 {/* <Logo src={girlNote} /> */}
-                <PresentStyle>
+                <PresentStyle mode={mode}>
                     <span>Olga Shestakova</span>
                     <div>
                         {text}<span style={{
@@ -55,7 +55,7 @@ export default (props) => {
                         }}>|</span>
                     </div>
                 </PresentStyle>
-                <Logo src={girlNote} />
+                <Logo src={girlNote} mode={mode} />
             </HeaderStyle>
             <About />
             <Training />
@@ -80,17 +80,18 @@ flex-direction:column;
 justify-content: center;
 width:100%;
 height:100vh;
+margin-bottom:30px;
 `
 const PresentStyle = styled.div`
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-font-size:${(props) => props.mode === 'pc' ? '3rem' : '1.5rem'};
+font-size:${(props) => props.mode === 'phone' ? '1.3rem' : '3rem'};
 color:rgb(50,50,50);
 padding:15px;
 span{
-    font-size:${(props) => props.mode ? '3.5rem' : '2rem'};
+    font-size:${(props) => props.mode === 'phone' ? '1.8rem' : '3.5rem'};
 }
 `
 
@@ -98,5 +99,5 @@ const Logo = styled.img`
 width:100%;
 height:50%;
 opacity:0.2;
-margin-top:${(props) => props.mode ? '200px' : '100px'};
+margin-top:${(props) => props.mode === 'phone' ? '0px' : '200px'};
 `

@@ -98,6 +98,7 @@ justify-content:center;
 align-items:center;
 width:100%;
 max-width:90%;
+height:100vh;
 `
 
 const TextStyle = styled.div`
