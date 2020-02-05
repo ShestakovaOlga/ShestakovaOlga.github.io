@@ -93,7 +93,7 @@ const CarouselStyle = styled(Carousel)`
     width:100%;
     .carousel {
         max-height: 500px;
-        max-width:${(props) => props.mode === 'phone' ? '100vw' : '50vw'};
+        max-width:${(props) => (props.mode === 'phone' && 'tablet') ? '100vw' : '50vw'};
     }
     .carousel .slide {
         background: none;
@@ -107,14 +107,14 @@ const CarouselStyle = styled(Carousel)`
 
 const MediaStyle = styled.div`
 display:flex;
-flex-direction:${(props) => props.mode === 'phone' ? 'column' : 'row'};;
+flex-direction:${(props) => (props.mode === 'phone' && 'tablet') ? 'column' : 'row'};;
 align-items:center;
 width:100%; 
 `
 const DescriptionStyle = styled.div`
 padding:15px;
 text-indent: 30px;
-width:${(props) => props.mode === 'phone' ? '100%' : '70%'};
+width:${(props) => (props.mode === 'phone' && 'tablet') ? '100%' : '70%'};
 
 `
 const Line = styled.div`
