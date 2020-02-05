@@ -63,12 +63,12 @@ export default (props) => {
                             type="text"
                             value={name}
                             onChange={e => setName(e.target.value)}
-                            placeholder='Nombre' />
+                            placeholder='Nombre' required />
                         <InputStyle id="email"
                             type="email"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
-                            placeholder='Email' />
+                            placeholder='Email' required />
                         <ValidationError
                             prefix="Email"
                             field="replyTo"
@@ -78,7 +78,7 @@ export default (props) => {
                             name="message"
                             value={message}
                             onChange={e => setMessage(e.target.value)}
-                            placeholder='Mensaje' />
+                            placeholder='Mensaje' required />
                         {isSubmitted ? '¡Gracias por contactar conmigo!' : null}
                         <Button type="submit" disabled={isSubmitting}>
                             Enviar
